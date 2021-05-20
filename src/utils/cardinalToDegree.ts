@@ -5,4 +5,6 @@ const cardinalToDegreeMap = {
     W: 270,
 };
 
+export type IOrientations = keyof typeof cardinalToDegreeMap;
+
 export default cardinalToDegreeMap;
