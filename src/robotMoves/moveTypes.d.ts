@@ -1,6 +1,6 @@
 import { IOrientations } from '../utils/cardinalToDegree';
 
-interface IPoint {
+export interface IPoint {
     x: number;
     y: number;
 }
