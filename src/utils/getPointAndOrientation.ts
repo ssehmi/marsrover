@@ -1,6 +1,12 @@
-const getPointAndOrientation = (startPostition: string) => {
+import { ILocation } from '../robotMoves/moveTypes';
+import { IOrientations } from './cardinalToDegree';
+
+const getPointAndOrientation = (startPostition: string): ILocation => {
     const [x, y, , orientation] = startPostition.split('');
-    return [parseInt(x, 10), parseInt(y, 10), orientation];
+    return {
+        orientation: orientation as IOrientations,
+        position: { x: parseInt(x, 10), y: parseInt(y, 10) },
+    };
 };
 
 export default getPointAndOrientation;
