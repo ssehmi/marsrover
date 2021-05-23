@@ -1,4 +1,5 @@
 import buildPath from './buildPath';
+import { AvailableInstructionsType } from './getMoveFromInstruction';
 
 describe('buildPath', () => {
     it('returns the start position if instructions length is 0', () => {
@@ -80,5 +81,30 @@ describe('buildPath', () => {
             { orientation: 'N', position: { x: 3, y: 1 } },
             { orientation: 'N', position: { x: 3, y: 2 } },
         ]);
+    });
+    describe('verify last position of robot from examples', () => {
+        it('starting at 11 E, with instructions: RFRFRFRF, robots last position should be 11 E', () => {
+            const instructions = 'RFRFRFRF'.split('');
+            const path = buildPath(
+                '11 E',
+                instructions as AvailableInstructionsType[]
+            );
+            expect(path.pop()).toEqual({
+                orientation: 'E',
+                position: { x: 1, y: 1 },
+            });
+        });
+        it('starting at 03 W, with instructions: LLFFFLFLFL, robots last position should be 23 S', () => {
+            const instructions = 'LLFFFLFLFL'.split('');
+            const path = buildPath(
+                '03 W',
+                instructions as AvailableInstructionsType[]
+            );
+            // In the examples the expectation of y is to be 3, it should be 4?
+            expect(path.pop()).toEqual({
+                orientation: 'S',
+                position: { x: 2, y: 3 },
+            });
+        });
     });
 });
