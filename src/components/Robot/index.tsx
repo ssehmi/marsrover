@@ -1,3 +1,4 @@
+import { transform } from 'typescript';
 import { IPoint } from '../../robotMoves/moveTypes';
 
 interface IComponentProps {
@@ -16,6 +17,8 @@ const Robot = ({ point: { x, y } }: IComponentProps) => {
                 height: '10px',
                 backgroundColor: 'red',
                 borderRadius: '50%',
+                transform: 'translate(-5px, 5px)',
+                transition: 'all 1s ease-out',
             }}
         />
     );
